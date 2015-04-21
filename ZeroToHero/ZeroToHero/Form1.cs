@@ -53,19 +53,16 @@ namespace ZeroToHero
                 default:
                     lchoose = "no"; break;
             }
-            int number=0;
-            if (textBox1.Text != "")
-                if (obj.mIsDigitsOnly(textBox1.Text) != false)
-                    number = int.Parse(textBox1.Text);
+            int number = 0;
             string result; // rezultatul obtinut in urma conversiei
-
-            if (number != 0 && lchoose != "no")
-            {
-                result = obj.mConvert(number, lchoose);
-                MessageBox.Show(result);
-            }
-            else
-                MessageBox.Show("Number or language incorrect !");
+            if (textBox1.Text != "")
+                if (Int32.TryParse(textBox1.Text, out number) != false && lchoose != "no")
+                {
+                    result = obj.mConvert(number, lchoose);
+                    MessageBox.Show(result);
+                }
+                else
+                    MessageBox.Show("Number or language incorrect !");
         }
 
 
