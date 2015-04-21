@@ -16,24 +16,9 @@ namespace ZeroToHero
         public Form1()
         {
             InitializeComponent();
-        }
+        }   
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Click_Convert(object sender, EventArgs e)
         {
             var obj = new ZeroToHero.@class.Convert();
             string language = comboBox1.Text;   // aici se citeste din chooseBox
@@ -56,16 +41,17 @@ namespace ZeroToHero
             int number = 0;
             string result; // rezultatul obtinut in urma conversiei
             if (textBox1.Text != "")
+            {
                 if (Int32.TryParse(textBox1.Text, out number) != false && lchoose != "no")
                 {
                     result = obj.mConvert(number, lchoose);
                     MessageBox.Show(result);
                 }
                 else
+                {
                     MessageBox.Show("Number or language incorrect !");
+                }
+            }
         }
-
-
-
     }
 }

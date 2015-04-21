@@ -16,16 +16,5 @@ namespace ZeroToHero.@class
             result = number.ToWords(new CultureInfo(language));
             return result;
         }
-
-        public bool mIsDigitsOnly(string str)
-        {
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-
-            return true;
-        }
     }
 }
