@@ -30,41 +30,45 @@ namespace ZeroToHero
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string language = "empty"; // aici se citeste din chooseBox
-            language = comboBox1.Text;
-            string lchoose = "no"; // limba care se transmite ca parametru pentru CultureInfo
-            if (language != "empty")
-            {
-                switch (language)
-                {
-                    case "Romana":
-                        lchoose = "ro-RO"; break;
-                    case "Engleza":
-                        lchoose = "en-US"; break;
-                    case "Franceza":
-                        lchoose = "fr-FR"; break;
-                    case "Germana":
-                        lchoose = "de"; break;
-                    case "Spaniola":
-                        lchoose = "es-ES"; break;
-                    default:
-                        lchoose = "no"; break;
-                }
-            }
-
-            int number = int.Parse(textBox1.Text);
             var obj = new ZeroToHero.@class.Convert();
+            string language = comboBox1.Text;   // aici se citeste din chooseBox
+            string lchoose = "no"; // limba care se transmite ca parametru pentru CultureInfo
+            switch (language)
+            {
+                case "Rusa":
+                    lchoose = "ru"; break;
+                case "Engleza":
+                    lchoose = "en-US"; break;
+                case "Franceza":
+                    lchoose = "fr-FR"; break;
+                case "Germana":
+                    lchoose = "de"; break;
+                case "Spaniola":
+                    lchoose = "es-ES"; break;
+                default:
+                    lchoose = "no"; break;
+            }
+            int number=0;
+            if (textBox1.Text != "")
+                if (obj.mIsDigitsOnly(textBox1.Text) != false)
+                    number = int.Parse(textBox1.Text);
             string result; // rezultatul obtinut in urma conversiei
-            result = obj.mconvert(number, lchoose);
-            MessageBox.Show(result);
+
+            if (number != 0 && lchoose != "no")
+            {
+                result = obj.mConvert(number, lchoose);
+                MessageBox.Show(result);
+            }
+            else
+                MessageBox.Show("Number or language incorrect !");
         }
 
-        
+
 
     }
 }
