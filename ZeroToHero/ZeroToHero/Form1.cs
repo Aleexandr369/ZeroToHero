@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZeroToHero.@class;
+using ZeroToHero.Lib;
 
 namespace ZeroToHero
 {
@@ -20,7 +20,7 @@ namespace ZeroToHero
 
         private void Click_Convert(object sender, EventArgs e)
         {
-            var obj = new ZeroToHero.@class.Convert();
+            var obj = new ZeroToHero.Lib.Convert();
             string language = comboBox1.Text;   // aici se citeste din chooseBox
             string lchoose = "no"; // limba care se transmite ca parametru pentru CultureInfo
             switch (language)

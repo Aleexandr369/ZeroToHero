@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Humanizer;
 using System.Globalization;
 
-namespace ZeroToHero.@class
+namespace ZeroToHero.Lib
 {
     public class Convert
     {
