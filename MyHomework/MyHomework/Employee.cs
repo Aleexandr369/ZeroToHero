@@ -28,7 +28,7 @@ namespace MyHomework
             Console.WriteLine("Angajat: {0} {1}\nSalariu: {2}\nZile libere: {3}\n", lastName, firstName, salary, availableDaysOff);
         }
 
-        private int SubstractDays(uint days)
+        private int SubstractDays(uint days) 
         {
             if (days > this.availableDaysOff)
             {
@@ -56,7 +56,7 @@ namespace MyHomework
             Console.WriteLine("Lista de concedii a angajatului {0} {1}\n", this.firstName, this.lastName);
             foreach (Leave a in allLeaves)
             {
-                Console.Write("Tip: {0}\nIncepand cu:{1}\nDurata:{2}\n", a.leaveType, a.startingDate.ToString("dd/MM/yyyy"), a.duration);
+                Console.WriteLine("Tip: {0}\nIncepand cu:{1}\nDurata:{2} zile\n", a.leaveType, a.startingDate.ToString("dd/MM/yyyy"), a.duration);
             }
         }
     }
