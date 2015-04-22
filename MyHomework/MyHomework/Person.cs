@@ -10,6 +10,6 @@ namespace MyHomework
     {
         protected string lastName;
         protected string firstName;
-        protected string dateOfBirth;
+        protected DateTime dateOfBirth;
     }
 }

@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 namespace MyHomework
 {
     class Leave
-    {
-        public enum leaveType
-        {
-            Medical,
-            Holiday,
-            Other
-        };
-        public leaveType leavetype;
+    {    
+        public string leaveType;
         public DateTime startingDate;
-        public int duration;
+        public uint duration;
         public string employee;
+
+        public Leave(string startingDate, uint duration, string leavetype)
+        {
+            this.startingDate = Convert.ToDateTime(startingDate);
+            this.duration = duration;
+            this.leaveType = leavetype;
+        }
     }
 }
