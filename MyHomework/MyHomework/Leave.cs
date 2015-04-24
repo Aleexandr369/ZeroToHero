@@ -8,10 +8,34 @@ namespace MyHomework
 {
     class Leave
     {    
-        public string leaveType;
-        public DateTime startingDate;
-        public uint duration;
-        public string employee;
+        private string leaveType;
+        private DateTime startingDate;
+        private uint duration;
+        private string employee;
+
+        public string LeaveT
+        {
+            get { return leaveType; } 
+            set { leaveType = value; }
+        }
+
+        public DateTime StartingDate
+        {
+            get { return startingDate; }
+            set { startingDate = value; }
+        }
+
+        public uint Duration
+        {
+            get { return duration; }
+            set { duration = value; }
+        }
+        
+        public string PEmployee
+        {
+            set { employee = value; }
+            get { return employee; }
+        }
 
         public Leave(string startingDate, uint duration, string leavetype)
         {

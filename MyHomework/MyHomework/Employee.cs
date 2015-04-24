@@ -8,16 +8,13 @@ namespace MyHomework
 {
     class Employee : Person
     {
-        public DateTime dateOfEmployment;
-        public double salary;
-        public uint availableDaysOff;
-        public List<Leave> allLeaves = new List<Leave>(); // lista de concedii pentru un angajat
+        private DateTime dateOfEmployment;
+        private double salary;
+        private uint availableDaysOff;
+        private List<Leave> allLeaves = new List<Leave>(); // lista de concedii pentru un angajat
 
-        public Employee(string LastName, string FirstName, string dateOfBirth, string dateOfEmployment, double salary, uint availableDaysOff )
+        public Employee(string lastName, string firstName, string dateOfBirth, string dateOfEmployment, double salary, uint availableDaysOff ) : base (lastName, firstName, dateOfBirth)
         {
-            this.lastName = LastName;
-            this.firstName = FirstName;
-            this.dateOfBirth = Convert.ToDateTime(dateOfBirth);
             this.dateOfEmployment = Convert.ToDateTime(dateOfEmployment);
             this.salary = salary;
             this.availableDaysOff = availableDaysOff;
@@ -43,20 +40,23 @@ namespace MyHomework
 
         public void AddNewLeave(Leave concediu) // un concediu nou
         {
-            int flag = SubstractDays(concediu.duration);
+            int flag = SubstractDays(concediu.Duration);
             if (flag == 1)
                 throw new InvalidLeaveException();
             else
+            {
                 allLeaves.Add(concediu);
-            concediu.employee = this.lastName + " " + this.firstName;
+                concediu.PEmployee = this.lastName + " " + this.firstName;
+            }
         }
 
-        public void GetLeaveList()   // afiseaza lista de concedii a unui angajat
+        public void GetLeaveList(int year)   // afiseaza lista de concedii a unui angajat
         {
             Console.WriteLine("Lista de concedii a angajatului {0} {1}\n", this.firstName, this.lastName);
             foreach (Leave a in allLeaves)
             {
-                Console.WriteLine("Tip: {0}\nIncepand cu:{1}\nDurata:{2} zile\n", a.leaveType, a.startingDate.ToString("dd/MM/yyyy"), a.duration);
+                if (a.StartingDate.Year >= year)
+                    Console.WriteLine("Tip: {0}\nIncepand cu:{1}\nDurata:{2} zile\n", a.LeaveT, a.StartingDate.ToString("dd/MM/yyyy"), a.Duration);
             }
         }
     }
@@ -64,6 +64,8 @@ namespace MyHomework
 
     class InvalidLeaveException : Exception
     {
-        public InvalidLeaveException() : base(String.Format("Durata concediului nu poate fi mai mare decat numarul de zile ramase! ")) { }
+        public InvalidLeaveException() { }
+        public InvalidLeaveException(string message) : base(String.Format("Durata concediului nu poate fi mai mare decat numarul de zile ramase! ")) { }
+        public InvalidLeaveException(string message, Exception inner) : base (message, inner) { }
     }
 }
