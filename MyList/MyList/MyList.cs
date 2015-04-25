@@ -86,15 +86,8 @@ namespace MyList
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach(T t in items)
-            {
-                if (this.count < 1)
-                {
-                    break;
-                }
-                this.count--;
-                yield return t;
-            }
+            for (int i = 0; i < this.count; i++)
+                yield return items[i];
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
