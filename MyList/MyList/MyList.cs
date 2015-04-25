@@ -18,14 +18,14 @@ namespace MyList
             get
             {
                 if (index < 0 || index >= this.count)
-                    throw new MyListException("ArgumentOutOfRangeException!");
+                    throw new ArgumentOutOfRangeException("Index invalid !");
                 else
                     return items[index];
             }
             set
             {
                 if (index < 0 || index >= this.count)
-                    throw new MyListException("ArgumentOutOfRangeException!");
+                    throw new ArgumentOutOfRangeException("Index invalid !");
                 else
                     items[index] = value;
             }
@@ -39,41 +39,44 @@ namespace MyList
 
         public void AddItem(T item) // adauga un element in lista
         {
-            Array.Resize(ref items, count + 1);
-            items[count] = item;
-            count++;
+            if (items.Length > this.count)
+            {
+                items[count] = item;
+                this.count++;
+            }
+            else
+            {
+                Array.Resize(ref items, (this.count + 1) * 2);
+                items[count] = item;
+                this.count++;
+            }
         }
+
         public void Clear()  // sterge toate elementele listei
         {
-            count = 0;
+            this.count = 0;
             items = new T[count];
         }
 
         public bool Contains(T item)  // verifica daca un element exista in lista
         {
-            int flag = 0;
             for (int i = 0; i < this.count; i++)
             {
-                if (((object)this[i]).Equals((object)item))
+                if (this[i].Equals(item))
                 {
-                    flag = 1;
-                    break;
+                    return true;
                 }    
             }
-            if (flag == 1)
-                return true;
-            else
-                return false;
+            return false;
         }
 
         public void RemoveAt(int index)  // sterge un element din lista
         {
             if (index < 0 || index >= this.count)
-                throw new MyListException("ArgumentOutOfRangeException!");
+                throw new ArgumentOutOfRangeException("Index invalid !");
             else
             {
-                //items[index] = default(T); 
-                for (int i = index; i < count - 1; i++)
+                for (int i = index; i < this.count - 1; i++)
                 {
                     items[i] = items[i + 1];
                 }
@@ -85,11 +88,11 @@ namespace MyList
         {
             foreach(T t in items)
             {
-                if (count < 1)
+                if (this.count < 1)
                 {
                     break;
                 }
-                count--;
+                this.count--;
                 yield return t;
             }
         }
@@ -99,40 +102,15 @@ namespace MyList
             return this.GetEnumerator();
         }
 
-        public bool match (T variabila) // returneaza random true sau false ; am mai facut una si in class Program
-        {
-            Random random = new Random();
-            int randomNumber = random.Next(0, 100);
-            if (randomNumber % 2 == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-
         public MyList<T> FindAll(Func<T,bool> match)
         {
-            bool flag;
             MyList<T> lista = new MyList<T>();
-            foreach(var aa in this.items)
+            for (int i = 0; i < this.count; i++)
             {
-                flag = match(aa);
-                if (flag == true)
-                    lista.AddItem(aa);
+                if (match(items[i]))
+                    lista.AddItem(items[i]);
             }
             return lista;
-        }
-        
-    }
-
-    class MyListException : Exception
-    {
-        public MyListException() { }
-        public MyListException(string message) : base(String.Format(message)) { }
-        public MyListException(string message, Exception inner) : base(message, inner) { }
+        }    
     }
 }
