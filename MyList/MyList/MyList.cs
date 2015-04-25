@@ -47,8 +47,6 @@ namespace MyList
             else
             {
                 Array.Resize(ref items, (this.count + 1) * 2);
-                for (int i = this.count + 1; i < items.Length; i++)
-                    items[i]=(T)Activator.CreateInstance(typeof(T));
                 items[count] = item;
                 this.count++;
             }
@@ -100,13 +98,10 @@ namespace MyList
         public MyList<T> FindAll(Func<T,bool> match)
         {
             MyList<T> lista = new MyList<T>();
-        
-            foreach (T t in items)
-            {
-                if (match(t))
-                    lista.AddItem(t);
-            }               
-            return lista;
+            for (int i = 0; i < this.count; i++)
+                if (match(items[i]))
+                    lista.AddItem(items[i]);
+           return lista;
         }    
     }
 }

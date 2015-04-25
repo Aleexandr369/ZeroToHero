@@ -10,7 +10,7 @@ namespace MyList
     class TestClass // clasa de test pentru verificare
     {
         int x=10; 
-        int y=10;
+        int y=20;
         [DefaultValue(20)]
         public int Y { get { return y; } set { y = value; } }
         [DefaultValue(10)]
