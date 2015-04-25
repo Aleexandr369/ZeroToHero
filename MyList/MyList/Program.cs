@@ -11,7 +11,7 @@ namespace MyList
         static void Main(string[] args)
         {
             MyList<int> listaint = new MyList<int>();
-
+       
             bool contine;
             listaint.AddItem(10);
             listaint.AddItem(20);

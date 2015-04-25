@@ -18,14 +18,14 @@ namespace MyList
             get
             {
                 if (index < 0 || index >= this.count)
-                    throw new ArgumentOutOfRangeException(index.ToString());
+                    throw new ArgumentOutOfRangeException("index");
                 else
                     return items[index];
             }
             set
             {
                 if (index < 0 || index >= this.count)
-                    throw new ArgumentOutOfRangeException(index.ToString());
+                    throw new ArgumentOutOfRangeException("index");
                 else
                     items[index] = value;
             }
@@ -37,7 +37,7 @@ namespace MyList
             items = new T[count];
         }
 
-        public void AddItem(T item) // adauga un element in lista
+        public void AddItem(T item)  // adauga un element in lista
         {
             if (items.Length > this.count)
             {
@@ -47,6 +47,8 @@ namespace MyList
             else
             {
                 Array.Resize(ref items, (this.count + 1) * 2);
+                for (int i = this.count + 1; i < items.Length; i++)
+                    items[i]=(T)Activator.CreateInstance(typeof(T));
                 items[count] = item;
                 this.count++;
             }
@@ -73,7 +75,7 @@ namespace MyList
         public void RemoveAt(int index)  // sterge un element din lista
         {
             if (index < 0 || index >= this.count)
-                throw new ArgumentOutOfRangeException(index.ToString());
+                throw new ArgumentOutOfRangeException("index");
             else
             {
                 for (int i = index; i < this.count - 1; i++)
@@ -101,8 +103,7 @@ namespace MyList
         
             foreach (T t in items)
             {
-                
-                if (t != null && match(t))
+                if (match(t))
                     lista.AddItem(t);
             }               
             return lista;
