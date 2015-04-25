@@ -17,5 +17,10 @@ namespace MyList
             this.x = x;
             this.y = y;
         }
+        public TestClass()
+        {
+            int x = 0;
+            int y = 0;
+        }
     }
 }

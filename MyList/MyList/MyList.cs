@@ -18,14 +18,14 @@ namespace MyList
             get
             {
                 if (index < 0 || index >= this.count)
-                    throw new ArgumentOutOfRangeException("Index invalid !");
+                    throw new ArgumentOutOfRangeException(index.ToString());
                 else
                     return items[index];
             }
             set
             {
                 if (index < 0 || index >= this.count)
-                    throw new ArgumentOutOfRangeException("Index invalid !");
+                    throw new ArgumentOutOfRangeException(index.ToString());
                 else
                     items[index] = value;
             }
@@ -73,7 +73,7 @@ namespace MyList
         public void RemoveAt(int index)  // sterge un element din lista
         {
             if (index < 0 || index >= this.count)
-                throw new ArgumentOutOfRangeException("Index invalid !");
+                throw new ArgumentOutOfRangeException(index.ToString());
             else
             {
                 for (int i = index; i < this.count - 1; i++)
@@ -98,11 +98,13 @@ namespace MyList
         public MyList<T> FindAll(Func<T,bool> match)
         {
             MyList<T> lista = new MyList<T>();
-            for (int i = 0; i < this.count; i++)
+        
+            foreach (T t in items)
             {
-                if (match(items[i]))
-                    lista.AddItem(items[i]);
-            }
+                
+                if (t != null && match(t))
+                    lista.AddItem(t);
+            }               
             return lista;
         }    
     }

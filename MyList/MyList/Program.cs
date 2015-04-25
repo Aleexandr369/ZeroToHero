@@ -11,6 +11,7 @@ namespace MyList
         static void Main(string[] args)
         {
             MyList<int> listaint = new MyList<int>();
+
             bool contine;
             listaint.AddItem(10);
             listaint.AddItem(20);
@@ -31,10 +32,7 @@ namespace MyList
             listatestclass.AddItem(test1); listatestclass.AddItem(test1); listatestclass.AddItem(test1); listatestclass.AddItem(test1);
             listatestclass.AddItem(test2); listatestclass.AddItem(test2); listatestclass.AddItem(test2); listatestclass.AddItem(test2);
             contine = listatestclass.Contains(test2);
-            //Console.Write(contine);
-            listatestclass.AddItem(test1);
-            listatestclass.AddItem(test1);
-            listatestclass.RemoveAt(3);
+
             MyList<TestClass> listatestclass2 = listatestclass.FindAll(VerificareTestClass); // nu inteleg ce se intampla aici, de ce nu crapa ??? cum face ???
 
             foreach (var item in listatestclass2)
