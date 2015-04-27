@@ -8,12 +8,12 @@ namespace MyHomework
 {
     class Leave
     {    
-        private string leaveType;
+        private LeaveType leaveType;
         private DateTime startingDate;
         private uint duration;
         private string employee;
 
-        public string LeaveT
+        public LeaveType LeaveT
         {
             get { return leaveType; } 
             set { leaveType = value; }
@@ -37,7 +37,7 @@ namespace MyHomework
             get { return employee; }
         }
 
-        public Leave(string startingDate, uint duration, string leavetype)
+        public Leave(string startingDate, uint duration, LeaveType leavetype)
         {
             this.startingDate = Convert.ToDateTime(startingDate);
             this.duration = duration;

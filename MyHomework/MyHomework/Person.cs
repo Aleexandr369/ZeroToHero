@@ -12,7 +12,7 @@ namespace MyHomework
         protected string firstName;
         protected DateTime dateOfBirth;
 
-        protected Person(string lastName, string firstName, string dateOfBirth)
+        public Person(string lastName, string firstName, string dateOfBirth)
         {
             this.lastName = lastName;
             this.firstName = firstName;

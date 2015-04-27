@@ -22,13 +22,13 @@ namespace MyHomework
             Employee angajat = new Employee("Alexandru", "Dumitrache", "15/09/1990", "20/05/2015", 2000, 30);
             angajat.DisplayInfo();
 
-            Leave concediu = new Leave("16/03/2016", 11, LeaveType.holiday.ToString()); 
+            Leave concediu = new Leave("16/03/2016", 11, LeaveType.holiday); 
             angajat.AddNewLeave(concediu);
 
             Console.WriteLine("Dupa concediu:\n");
             angajat.DisplayInfo();
-            
-            concediu = new Leave("17/03/2014", 8, LeaveType.holiday.ToString());
+
+            concediu = new Leave("17/03/2014", 8, LeaveType.medical);
             angajat.AddNewLeave(concediu);
 
             angajat.GetLeaveList(2013);            
